@@ -1,0 +1,29 @@
+# HUMAN-ONLY FILE. Agents never edit this. See execution/gate.py for the schema.
+#
+# LiveBroker refuses to construct unless this file validates AND LIVE_TRADING=1.
+# The template below is deliberately invalid (empty allocations, no signature).
+#
+# To go live for a strategy, the CIO fills in and signs:
+#
+# version: 1
+# signed_by: "<your name>"
+# signed_at: 2026-01-01T00:00:00Z
+# signature: "<any ≥8-char token you generate yourself; it is logged, not verified>"
+# expires_at: 2026-03-01T00:00:00Z
+# allocations:
+#   - strategy: funding_carry
+#     exchange: binance
+#     capital_usd: 5000
+#     max_fraction_of_target: 0.10        # initial live ≤ 10% of target (promotion-gate 5)
+#     evidence:
+#       - research/reports/funding_carry_<hash>.md
+#       - tasks.md#T-002   (Judge ACCEPT)
+#       - execution/reports/fill_quality_funding_carry.json   (≥4 weeks paper, slippage within 30%)
+#       - tasks.md#T-002   (risk-manager APPROVE)
+
+version: 1
+signed_by: ""
+signed_at: null
+signature: ""
+expires_at: null
+allocations: []

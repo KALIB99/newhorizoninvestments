@@ -1,0 +1,17 @@
+# Paper roster. Research → Paper promotion adds an entry here (promotion-gate step 4).
+# No human signature needed. Every entry must reference a tearsheet whose config hash
+# matches the code on main, and a Judge ACCEPT in tasks.md.
+
+broker: PaperBroker
+cash_usd: 100000
+exchanges: [binance, bybit]
+vol_target_annual: 0.15   # mirrors risk/limits.py; the code value wins if they differ
+
+strategies: []
+# - name: funding_carry
+#   config_hash: 0123456789ab
+#   tearsheet: research/reports/funding_carry_0123456789ab.md
+#   judge_verdict: tasks.md#T-002
+#   promoted_at: 2026-01-01T00:00:00Z
+#   symbols: ["BTC/USDT:USDT", "ETH/USDT:USDT", "SOL/USDT:USDT"]
+#   risk_budget: 0.45       # share of portfolio vol target

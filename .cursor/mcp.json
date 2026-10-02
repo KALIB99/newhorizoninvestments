@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "trader-dev": {
+      "url": "https://mcp.trader.dev/mcp"
+    },
+    "feature-store": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-motherduck",
+        "--db-path",
+        "${workspaceFolder}/data/store/features.duckdb",
+        "--read-only"
+      ]
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${env:GITHUB_TOKEN}"
+      }
+    }
+  }
+}

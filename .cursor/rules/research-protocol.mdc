@@ -1,0 +1,13 @@
+---
+description: Required protocol for anything under research/
+globs: research/**
+---
+- Every hypothesis starts with a written economic rationale (why does this edge exist, who is on the other side, why hasn't it been arbitraged).
+- Split: 60% train / 20% validation / 20% test, with purged & embargoed k-fold (embargo = 2× max holding period). Use `eval.cv.PurgedKFold` and `eval.cv.walk_forward`.
+- Use triple-barrier labelling for classification targets; meta-labelling for sizing.
+- Parameter search ≤ 50 combinations unless using Bayesian opt with a logged prior. Record the count — it feeds the Deflated Sharpe calculation (`eval.metrics.deflated_sharpe`).
+- Costs come from `eval.costs.CostModel` — fees + spread + slippage + funding. Never hand-roll a cost assumption.
+- Report: Sharpe, Deflated Sharpe, PBO, max DD, Calmar, turnover, cost drag, trade count, per-regime PnL, monthly PnL table.
+- Save a tearsheet to research/reports/<strategy>_<confighash>.md and the machine-readable twin research/reports/<strategy>_<confighash>.json (schema: `eval.report.Tearsheet`). The gate reads the JSON.
+- State the verdict plainly as one of: Reject / Insufficient evidence / Candidate for Judge. Never write "profitable".
+- Strategies live in research/strategies/<name>.py and expose `STRATEGY: eval.report.StrategySpec`.

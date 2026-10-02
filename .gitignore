@@ -1,0 +1,38 @@
+# secrets — never commit
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# data & artefacts (large, regenerable)
+data/store/
+data/raw/
+news/store/
+ops/logs/
+*.parquet
+*.duckdb
+*.duckdb.wal
+
+# keep report directories, ignore nothing inside them (reports are evidence)
+!research/reports/
+!data/reports/
+!execution/reports/
+!ops/reports/
+
+# notebooks checkpoints
+.ipynb_checkpoints/
+
+# os / editor
+.DS_Store
