@@ -7,18 +7,21 @@ Module contract:
     from signals.base import Params
     from eval.report import StrategySpec
 
-    class FundingCarryParams(Params):
-        entry_z: float = 1.5
-        exit_z: float = 0.5
+    class CyclicalInversionParams(Params):
+        level_lookback: tuple[int, ...] = (48, 96, 168)   # the pre-registered grid lives here
         ...
 
     STRATEGY = StrategySpec(
-        name="funding_carry",
+        name="cyclical_inversion",
         description=...,
-        rationale=...,            # the written economic rationale (research-protocol)
-        signals=["funding_z"],    # names in signals.registry
+        rationale=...,               # the written economic rationale (research-protocol)
+        signals=["sr_inversion"],    # names in signals.registry
         timeframe="1h",
-        max_holding_bars=24 * 7,
-        params_class="research.strategies.funding_carry.FundingCarryParams",
+        max_holding_bars=72,
+        params_class="research.strategies.cyclical_inversion.CyclicalInversionParams",
     )
+
+Strategies traded through ``trader.engine`` should build on ``research.common`` (data →
+MarketData, walk-forward selection, ¼-Kelly sizing, tearsheet) so the protocol is identical
+for every candidate. ``cyclical_inversion`` is the reference implementation.
 """

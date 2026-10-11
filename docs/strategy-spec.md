@@ -70,9 +70,11 @@ Chaos → gross exposure × 0.3, directional signals off, carry only.
 - Portfolio weights: inverse-variance shrunk to equal weight (λ = 0.5); correlation cap 0.7.
 - Final sizing × 0.25 Kelly multiplier derived from the OOS trade distribution; × regime
   multiplier (Trend 1.0, Range 0.8, Chaos 0.3).
-- Target 15% annualised portfolio vol. Realistic goal after costs: Sharpe 1.0–1.5,
-  max DD 10–15%. **Anything backtesting > 3 Sharpe is almost certainly overfit or
-  mis-costed** — the Judge treats it as a red flag, not a win.
+- Target 10% annualised portfolio vol (amended from 15% on 2026-10-10, T-018: the old target
+  was inconsistent with the -8% halt). Realistic goal after costs: Sharpe 1.0–1.5,
+  max DD 8–12%; the -8% tier halves risk, the -15% halt is the hard stop. **Anything
+  backtesting > 3 Sharpe is almost certainly overfit or mis-costed** — the Judge treats it as
+  a red flag, not a win.
 
 ## 5.8 Validation stack (what "profitable" must mean here)
 

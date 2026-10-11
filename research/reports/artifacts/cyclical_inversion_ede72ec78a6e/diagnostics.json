@@ -1,0 +1,525 @@
+{
+  "oos_start": "2023-06-30",
+  "oos_end": "2026-09-12",
+  "total_return": -0.06722238450195717,
+  "cagr": -0.02145713046809572,
+  "mean_daily_return": -5.690080698978813e-05,
+  "best_day": 0.014072923363632972,
+  "worst_day": -0.015371902863322129,
+  "pct_days_positive": 0.12382578992314261,
+  "pct_days_flat": 0.7378309137489325,
+  "halts": [
+    "2026-06-03T20:00:00+00:00 trailing_drawdown equity=93,287"
+  ],
+  "rules_triggered": {
+    "derisk_in_drawdown": 178,
+    "skip_cooldown": 149,
+    "shrunk_to_planned_risk": 74,
+    "shrunk_to_budget": 72,
+    "skip_risk_budget_full": 59,
+    "skip_consecutive_losses": 39,
+    "skip_cost_vs_edge": 2,
+    "halt_trailing_drawdown": 1
+  },
+  "by_symbol": {
+    "BTC/USDT:USDT": {
+      "trades": 94,
+      "pnl_usd": -1952.9019747533744,
+      "avg_R": -0.19730798543305564
+    },
+    "ETH/USDT:USDT": {
+      "trades": 89,
+      "pnl_usd": 928.0358159025513,
+      "avg_R": -0.0057420160997992764
+    },
+    "SOL/USDT:USDT": {
+      "trades": 92,
+      "pnl_usd": -5697.372291345106,
+      "avg_R": -0.21028515537482462
+    }
+  },
+  "by_side": {
+    "short": {
+      "trades": 50,
+      "pnl_usd": -2425.8253928083386,
+      "avg_R": 0.09582789571357903,
+      "hit_rate": 0.36
+    },
+    "long": {
+      "trades": 225,
+      "pnl_usd": -4296.413057387591,
+      "avg_R": -0.19198052952778752,
+      "hit_rate": 0.3022222222222222
+    }
+  },
+  "by_sleeve": {
+    "inv_n168_k4.0_t3.0_both": {
+      "trades": 34,
+      "pnl_usd": -3753.683689124199,
+      "avg_R": -0.28720253179442334
+    },
+    "inv_n168_k4.0_t3.0_long": {
+      "trades": 33,
+      "pnl_usd": 827.4634342487709,
+      "avg_R": -0.11925153144075748
+    },
+    "inv_n96_k4.0_t3.0_both": {
+      "trades": 57,
+      "pnl_usd": -1783.805364546213,
+      "avg_R": -0.02870176281038933
+    },
+    "inv_n96_k4.0_t3.0_long": {
+      "trades": 151,
+      "pnl_usd": -2012.21283077429,
+      "avg_R": -0.15276845867103084
+    }
+  },
+  "exit_reasons": {
+    "stop": 222,
+    "time": 27,
+    "signal": 23,
+    "kill_switch": 2,
+    "stop_gap": 1
+  },
+  "avg_R_by_exit": {
+    "kill_switch": -0.7966808579814337,
+    "signal": 2.8481751605606798,
+    "stop": -0.5354899962404575,
+    "stop_gap": 2.1145040627281144,
+    "time": 0.5350142136165716
+  },
+  "avg_R": -0.1396517249384481,
+  "median_bars_held": 15.0,
+  "funding_usd": 647.1722708944822,
+  "cost_usd": 5954.379866681507,
+  "trial_daily_sharpes_full_period": {
+    "inv_n96_k4.0_t3.0_both": -0.955,
+    "inv_n96_k4.0_t3.0_long": -0.356,
+    "inv_n168_k4.0_t3.0_both": -1.159,
+    "inv_n168_k4.0_t3.0_long": -0.401
+  },
+  "trial_trades_full_period": {
+    "inv_n96_k4.0_t3.0_both": 1400,
+    "inv_n96_k4.0_t3.0_long": 657,
+    "inv_n168_k4.0_t3.0_both": 1047,
+    "inv_n168_k4.0_t3.0_long": 454
+  },
+  "walk_forward_windows": [
+    {
+      "test_start": "2023-06-30",
+      "test_end": "2023-07-29",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": 1.789,
+        "train_trades": 93,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2023-07-30",
+      "test_end": "2023-08-28",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": 1.608,
+        "train_trades": 52,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2023-08-29",
+      "test_end": "2023-09-27",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": 1.054,
+        "train_trades": 52,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2023-09-28",
+      "test_end": "2023-10-27",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": 1.518,
+        "train_trades": 97,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2023-10-28",
+      "test_end": "2023-11-26",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.463,
+        "train_trades": 65,
+        "risk_per_trade": 0.00356
+      }
+    },
+    {
+      "test_start": "2023-11-27",
+      "test_end": "2023-12-26",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 1.065,
+        "train_trades": 58,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2023-12-27",
+      "test_end": "2024-01-25",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 2.229,
+        "train_trades": 51,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2024-01-26",
+      "test_end": "2024-02-24",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 1.114,
+        "train_trades": 59,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2024-02-25",
+      "test_end": "2024-03-25",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 1.914,
+        "train_trades": 47,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2024-03-26",
+      "test_end": "2024-04-24",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 1.451,
+        "train_trades": 50,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2024-04-25",
+      "test_end": "2024-05-24",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.315,
+        "train_trades": 58,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2024-05-25",
+      "test_end": "2024-06-23",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": -0.035,
+        "train_trades": 72,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-06-24",
+      "test_end": "2024-07-23",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": -0.797,
+        "train_trades": 81,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-07-24",
+      "test_end": "2024-08-22",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": -1.074,
+        "train_trades": 79,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-08-23",
+      "test_end": "2024-09-21",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": -1.819,
+        "train_trades": 99,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-09-22",
+      "test_end": "2024-10-21",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -1.379,
+        "train_trades": 144,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-10-22",
+      "test_end": "2024-11-20",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -1.109,
+        "train_trades": 150,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-11-21",
+      "test_end": "2024-12-20",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -0.746,
+        "train_trades": 156,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2024-12-21",
+      "test_end": "2025-01-19",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": -0.823,
+        "train_trades": 61,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-01-20",
+      "test_end": "2025-02-18",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": -0.496,
+        "train_trades": 67,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-02-19",
+      "test_end": "2025-03-20",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": -0.808,
+        "train_trades": 58,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-03-21",
+      "test_end": "2025-04-19",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": 0.194,
+        "train_trades": 68,
+        "risk_per_trade": 0.00091
+      }
+    },
+    {
+      "test_start": "2025-04-20",
+      "test_end": "2025-05-19",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": -0.254,
+        "train_trades": 204,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-05-20",
+      "test_end": "2025-06-18",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": -0.224,
+        "train_trades": 192,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-06-19",
+      "test_end": "2025-07-18",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": 0.151,
+        "train_trades": 188,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-07-19",
+      "test_end": "2025-08-17",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.654,
+        "train_trades": 91,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2025-08-18",
+      "test_end": "2025-09-16",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.835,
+        "train_trades": 85,
+        "risk_per_trade": 0.00486
+      }
+    },
+    {
+      "test_start": "2025-09-17",
+      "test_end": "2025-10-16",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.422,
+        "train_trades": 80,
+        "risk_per_trade": 0.00263
+      }
+    },
+    {
+      "test_start": "2025-10-17",
+      "test_end": "2025-11-15",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_long",
+        "train_sharpe": 0.257,
+        "train_trades": 81,
+        "risk_per_trade": 0.00037
+      }
+    },
+    {
+      "test_start": "2025-11-16",
+      "test_end": "2025-12-15",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_long",
+        "train_sharpe": -0.563,
+        "train_trades": 55,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2025-12-16",
+      "test_end": "2026-01-14",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -1.382,
+        "train_trades": 154,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-01-15",
+      "test_end": "2026-02-13",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -1.285,
+        "train_trades": 145,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-02-14",
+      "test_end": "2026-03-15",
+      "inv": {
+        "trial": "inv_n168_k4.0_t3.0_both",
+        "train_sharpe": -1.641,
+        "train_trades": 146,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-03-16",
+      "test_end": "2026-04-14",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": -0.376,
+        "train_trades": 197,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-04-15",
+      "test_end": "2026-05-14",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": 0.138,
+        "train_trades": 189,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2026-05-15",
+      "test_end": "2026-06-13",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": 1.342,
+        "train_trades": 192,
+        "risk_per_trade": 0.005
+      }
+    },
+    {
+      "test_start": "2026-06-14",
+      "test_end": "2026-07-13",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": -0.269,
+        "train_trades": 196,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-07-14",
+      "test_end": "2026-08-12",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": -0.066,
+        "train_trades": 191,
+        "risk_per_trade": 0.0
+      }
+    },
+    {
+      "test_start": "2026-08-13",
+      "test_end": "2026-09-11",
+      "inv": {
+        "trial": "inv_n96_k4.0_t3.0_both",
+        "train_sharpe": 0.022,
+        "train_trades": 182,
+        "risk_per_trade": 0.00345
+      }
+    }
+  ],
+  "sweep_diagnostic": {
+    "BTC/USDT:USDT": {
+      "sweeps": 855,
+      "reclaimed_within_window": 716,
+      "fwd_24h_atr_mean_reclaimed": -0.09380248225673168,
+      "fwd_24h_atr_mean_not_reclaimed": -0.34833075509328243,
+      "fwd_24h_hit_rate_reclaimed": 0.5586592178770949,
+      "fwd_24h_hit_rate_not_reclaimed": 0.48201438848920863
+    },
+    "ETH/USDT:USDT": {
+      "sweeps": 731,
+      "reclaimed_within_window": 566,
+      "fwd_24h_atr_mean_reclaimed": 0.04501459866480359,
+      "fwd_24h_atr_mean_not_reclaimed": 0.054683644632095026,
+      "fwd_24h_hit_rate_reclaimed": 0.5724381625441696,
+      "fwd_24h_hit_rate_not_reclaimed": 0.5151515151515151
+    },
+    "SOL/USDT:USDT": {
+      "sweeps": 861,
+      "reclaimed_within_window": 692,
+      "fwd_24h_atr_mean_reclaimed": 0.26644104311337646,
+      "fwd_24h_atr_mean_not_reclaimed": -0.323049669924041,
+      "fwd_24h_hit_rate_reclaimed": 0.5563583815028902,
+      "fwd_24h_hit_rate_not_reclaimed": 0.46153846153846156
+    }
+  }
+}

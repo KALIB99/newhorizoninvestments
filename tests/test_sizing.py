@@ -70,10 +70,11 @@ def test_combine_weights_shrinks_toward_equal():
 
 
 def test_position_from_signal_applies_regime_multiplier_and_clip():
-    base = position_from_signal(1.0, 0.15, 1.0, "Trend")
+    vt = LIMITS.vol_target_annual  # realised vol == target → unit weight before multipliers
+    base = position_from_signal(1.0, vt, 1.0, "Trend")
     assert base == pytest.approx(1.0)
-    assert position_from_signal(1.0, 0.15, 1.0, "Range") == pytest.approx(0.8)
-    assert position_from_signal(1.0, 0.15, 1.0, "Chaos") == pytest.approx(0.3)
+    assert position_from_signal(1.0, vt, 1.0, "Range") == pytest.approx(0.8)
+    assert position_from_signal(1.0, vt, 1.0, "Chaos") == pytest.approx(0.3)
     assert position_from_signal(1.0, 0.01, 1.0, "Trend") == LIMITS.max_gross_exposure
     assert position_from_signal(1.0, 0.0, 1.0, "Trend") == 0.0
     with pytest.raises(KeyError):

@@ -1,0 +1,22 @@
+{
+  "exchange": "binance",
+  "symbol": "SOL/USDT",
+  "timeframe": "1h",
+  "n_rows": 53783,
+  "start": "2020-08-11T07:00:00Z",
+  "end": "2026-10-01T00:00:00Z",
+  "expected_rows": 53802,
+  "n_gaps": 19,
+  "gap_fraction": 0.00035314672317014235,
+  "largest_gap_bars": 4,
+  "n_duplicate_ts": 0,
+  "n_outliers_10sigma": 115,
+  "n_nonpositive_prices": 0,
+  "n_ohlc_violations": 0,
+  "max_clock_drift_seconds": 0.0,
+  "passed": true,
+  "issues": [
+    "WARN: 115 returns beyond 10σ (robust) — verify against a second exchange before use"
+  ],
+  "generated_at": "2026-10-11T09:56:09.527272Z"
+}

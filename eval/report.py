@@ -46,6 +46,20 @@ class Tearsheet(BaseModel):
     data_start: datetime
     data_end: datetime
     timeframe: str
+    horizon: Literal["intraday", "multiday"] = Field(
+        "intraday",
+        description="'multiday' when the strategy holds for ≥ 1 day (bars ≥ 1d, or carry-type books); "
+        "the gate's trade-count floor is 200 for intraday and 100 for multiday. The Judge checks "
+        "the claim against the median holding time in the trades artefact.",
+    )
+    market_neutral: bool = Field(
+        False,
+        description="True only for hedged books with ~zero net market exposure (e.g. long spot / short perp "
+        "carry). Together with horizon='multiday' it raises the gate's Sharpe plausibility cap from 3.0 to "
+        "6.0 (CIO-approved 2026-10-11, tasks.md T-002): a yield book that is flat most days has a tiny "
+        "return dispersion and therefore a high Sharpe without a high return. The Judge checks the claim "
+        "against the trades artefact (paired legs, net delta ≈ 0).",
+    )
     symbols: list[str]
     cost_model: dict = Field(description="CostModel.model_dump() used")
     cv: str = Field("purged-kfold → walk-forward 180D/30D", description="split description")
@@ -111,7 +125,7 @@ Generated {self.generated_at.isoformat()} · code {self.code_ref or "uncommitted
 **Verdict (researcher): {self.verdict}**
 
 ## Protocol
-- Data: {", ".join(self.symbols)} · {self.timeframe} · {self.data_start.date()} → {self.data_end.date()}
+- Data: {", ".join(self.symbols)} · {self.timeframe} ({self.horizon}) · {self.data_start.date()} → {self.data_end.date()}
 - Splits: {self.cv}
 - Trials evaluated (feeds DSR): **{self.n_trials}**
 - Cost model: `{json.dumps(self.cost_model, sort_keys=True)}`

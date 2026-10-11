@@ -83,6 +83,32 @@ def test_each_threshold_fails_independently(over, name):
     assert any(name.lower() in c.name.lower() for c in failed), [c.name for c in failed]
 
 
+def test_trade_floor_scales_with_horizon():
+    # intraday: 200 required
+    assert not _passed(gate.evaluate(mk_tearsheet(n_trades_oos=120)))
+    # declared multiday (carry-type book on 1h bars): 100 required
+    assert _passed(gate.evaluate(mk_tearsheet(n_trades_oos=120, horizon="multiday")))
+    assert not _passed(gate.evaluate(mk_tearsheet(n_trades_oos=99, horizon="multiday")))
+    # daily bars imply multiday even if not declared
+    assert _passed(gate.evaluate(mk_tearsheet(n_trades_oos=120, timeframe="1d")))
+    assert not _passed(gate.evaluate(mk_tearsheet(n_trades_oos=120, timeframe="4h")))
+
+
+def test_sharpe_plausibility_carve_out_needs_both_neutral_and_multiday():
+    # a Sharpe-4.5 book fails the 3.0 cap by default ...
+    assert not _passed(gate.evaluate(mk_tearsheet(sharpe_oos=4.5, sharpe_is=5.0)))
+    # ... declaring only one of the two does not unlock the carve-out ...
+    assert not _passed(gate.evaluate(mk_tearsheet(sharpe_oos=4.5, sharpe_is=5.0, horizon="multiday")))
+    assert not _passed(gate.evaluate(mk_tearsheet(sharpe_oos=4.5, sharpe_is=5.0, market_neutral=True)))
+    # ... both together raise the cap to 6.0, which remains a hard bound
+    ok = gate.evaluate(mk_tearsheet(sharpe_oos=4.5, sharpe_is=5.0, horizon="multiday", market_neutral=True))
+    assert _passed(ok)
+    assert any("market-neutral multiday cap" in c.detail for c in ok)
+    assert not _passed(
+        gate.evaluate(mk_tearsheet(sharpe_oos=6.5, sharpe_is=7.0, horizon="multiday", market_neutral=True))
+    )
+
+
 def test_short_data_span_is_warning_not_failure():
     ts = mk_tearsheet(data_start=datetime(2025, 6, 1, tzinfo=UTC))
     checks = gate.evaluate(ts)

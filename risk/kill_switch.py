@@ -35,6 +35,7 @@ class KillSwitchState:
     day: datetime | None = None  # UTC date of day_start_equity
     high_water_mark: float = 0.0
     gross_multiplier: float = 1.0
+    derisk: bool = False  # in the trailing-DD de-risk tier (risk per trade × multiplier)
     log: list[str] = field(default_factory=list)
 
 
@@ -58,6 +59,13 @@ class KillSwitch:
 
     def gross_multiplier(self) -> float:
         return 0.0 if self.state.halted else self.state.gross_multiplier
+
+    def risk_multiplier(self) -> float:
+        """Multiplier on risk per trade: 0 when halted, ``trailing_dd_derisk_multiplier`` in the
+        de-risk tier, else 1. Recovers automatically once the drawdown closes above the tier."""
+        if self.state.halted:
+            return 0.0
+        return self.limits.trailing_dd_derisk_multiplier if self.state.derisk else 1.0
 
     # ---- triggers -----------------------------------------------------------------------
     def trip(self, reason: HaltReason | str, detail: str = "", now: datetime | None = None) -> None:
@@ -92,6 +100,15 @@ class KillSwitch:
             dd = equity / self.state.high_water_mark - 1.0
             if dd <= self.limits.trailing_dd_limit + eps:
                 self.trip(HaltReason.TRAILING_DD, f"dd={dd:.2%} <= {self.limits.trailing_dd_limit:.2%}", now)
+            in_tier = dd <= self.limits.trailing_dd_derisk + eps
+            if in_tier and not self.state.derisk:
+                msg = (f"DE-RISK dd={dd:.2%} <= {self.limits.trailing_dd_derisk:.2%} @ {now.isoformat()}: "
+                       f"risk per trade × {self.limits.trailing_dd_derisk_multiplier}")
+                self.state.log.append(msg)
+                logger.warning(msg)
+            elif self.state.derisk and not in_tier:
+                self.state.log.append(f"de-risk tier cleared dd={dd:.2%} @ {now.isoformat()}")
+            self.state.derisk = in_tier
 
     def on_reconciliation(
         self, local: dict[str, float], exchange: dict[str, float], now: datetime | None = None

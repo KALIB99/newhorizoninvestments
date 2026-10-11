@@ -1,0 +1,314 @@
+[
+  {
+    "test_start": "2023-06-30",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 2.698
+  },
+  {
+    "test_start": "2023-07-30",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 1.51
+  },
+  {
+    "test_start": "2023-08-29",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.999
+  },
+  {
+    "test_start": "2023-09-28",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.999
+  },
+  {
+    "test_start": "2023-10-28",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -2.429
+  },
+  {
+    "test_start": "2023-11-27",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 3.638
+  },
+  {
+    "test_start": "2023-12-27",
+    "trial": [
+      0.25,
+      0.1
+    ],
+    "train_sharpe": 6.549
+  },
+  {
+    "test_start": "2024-01-26",
+    "trial": [
+      0.25,
+      0.1
+    ],
+    "train_sharpe": 8.425
+  },
+  {
+    "test_start": "2024-02-25",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 10.258
+  },
+  {
+    "test_start": "2024-03-26",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 12.676
+  },
+  {
+    "test_start": "2024-04-25",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 14.663
+  },
+  {
+    "test_start": "2024-05-25",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 14.333
+  },
+  {
+    "test_start": "2024-06-24",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 12.857
+  },
+  {
+    "test_start": "2024-07-24",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 10.743
+  },
+  {
+    "test_start": "2024-08-23",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 9.119
+  },
+  {
+    "test_start": "2024-09-22",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": 4.867
+  },
+  {
+    "test_start": "2024-10-22",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": 1.415
+  },
+  {
+    "test_start": "2024-11-21",
+    "trial": [
+      0.15,
+      0.1
+    ],
+    "train_sharpe": 1.826
+  },
+  {
+    "test_start": "2024-12-21",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 6.306
+  },
+  {
+    "test_start": "2025-01-20",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 5.417
+  },
+  {
+    "test_start": "2025-02-19",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 5.417
+  },
+  {
+    "test_start": "2025-03-21",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 5.417
+  },
+  {
+    "test_start": "2025-04-20",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 5.417
+  },
+  {
+    "test_start": "2025-05-20",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": 5.314
+  },
+  {
+    "test_start": "2025-06-19",
+    "trial": [
+      0.4,
+      0.05
+    ],
+    "train_sharpe": 2.481
+  },
+  {
+    "test_start": "2025-07-19",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -Infinity
+  },
+  {
+    "test_start": "2025-08-18",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 1.441
+  },
+  {
+    "test_start": "2025-09-17",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": 1.441
+  },
+  {
+    "test_start": "2025-10-17",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.667
+  },
+  {
+    "test_start": "2025-11-16",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.667
+  },
+  {
+    "test_start": "2025-12-16",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.667
+  },
+  {
+    "test_start": "2026-01-15",
+    "trial": [
+      0.25,
+      0.05
+    ],
+    "train_sharpe": -0.892
+  },
+  {
+    "test_start": "2026-02-14",
+    "trial": [
+      0.25,
+      0.1
+    ],
+    "train_sharpe": -2.03
+  },
+  {
+    "test_start": "2026-03-16",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -1.86
+  },
+  {
+    "test_start": "2026-04-15",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -Infinity
+  },
+  {
+    "test_start": "2026-05-15",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -Infinity
+  },
+  {
+    "test_start": "2026-06-14",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -Infinity
+  },
+  {
+    "test_start": "2026-07-14",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -1.79
+  },
+  {
+    "test_start": "2026-08-13",
+    "trial": [
+      0.15,
+      0.05
+    ],
+    "train_sharpe": -1.79
+  }
+]

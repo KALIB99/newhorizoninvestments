@@ -9,7 +9,13 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class RiskLimits(BaseModel):
     """Canonical values from risk-invariants.mdc. Frozen. Do not loosen without the human's
-    explicit approval in the PR description (and update the .mdc in the same PR)."""
+    explicit approval in the PR description (and update the .mdc in the same PR).
+
+    Amendment 2026-10-10, CIO-approved (tasks.md T-018, research/reports/constitution_review.md):
+    vol target 15% → 10% and trailing hard halt −8% → −15%, with −8% becoming an automatic
+    de-risk tier (risk per trade × 0.5, alert). Rationale: at 15% vol a Sharpe-1 book tripped
+    the −8% sticky halt with ~100% probability within 3 years; at 10% / −15% it is ≈ 21%.
+    """
 
     model_config = ConfigDict(frozen=True)
 
@@ -17,9 +23,11 @@ class RiskLimits(BaseModel):
     max_gross_exposure: float = Field(2.0, description="Σ|w_i| ≤ 2.0× equity")
     max_net_exposure: float = Field(1.0, description="|Σ w_i| ≤ 1.0× equity")
     daily_loss_limit: float = Field(-0.025, description="flatten + halt until next UTC day")
-    trailing_dd_limit: float = Field(-0.08, description="from HWM; halt, human re-enable")
+    trailing_dd_derisk: float = Field(-0.08, description="from HWM; risk per trade × multiplier + alert, auto-recovers")
+    trailing_dd_derisk_multiplier: float = Field(0.5, description="risk per trade multiplier while in the de-risk tier")
+    trailing_dd_limit: float = Field(-0.15, description="from HWM; halt, human re-enable")
     kelly_fraction: float = Field(0.25, description="apply 0.25 × Kelly")
-    vol_target_annual: float = Field(0.15, description="15% annualised, 20-period EWMA")
+    vol_target_annual: float = Field(0.10, description="10% annualised, 20-period EWMA")
     event_pre_minutes: int = Field(15, description="no new risk before Tier-1 event")
     event_post_minutes: int = Field(30, description="no new risk after Tier-1 event")
     data_staleness_seconds: int = Field(180, description="kill switch if data older than this")

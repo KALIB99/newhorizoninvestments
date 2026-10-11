@@ -52,6 +52,7 @@ def load(
     if bad:
         raise ValueError(f"invalid column names {bad}; identifiers must match {_IDENT.pattern}")
     con = duckdb.connect()
+    con.execute("SET TimeZone = 'UTC'")
     try:
         # The only interpolated pieces are a path we built ourselves and identifiers checked
         # against _IDENT above; time bounds are bound parameters.

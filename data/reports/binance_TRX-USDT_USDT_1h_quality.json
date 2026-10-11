@@ -1,0 +1,23 @@
+{
+  "exchange": "binance",
+  "symbol": "TRX/USDT:USDT",
+  "timeframe": "1h",
+  "n_rows": 58696,
+  "start": "2020-01-15T09:00:00Z",
+  "end": "2026-10-01T00:00:00Z",
+  "expected_rows": 58816,
+  "n_gaps": 120,
+  "gap_fraction": 0.002040261153427639,
+  "largest_gap_bars": 72,
+  "n_duplicate_ts": 0,
+  "n_outliers_10sigma": 506,
+  "n_nonpositive_prices": 0,
+  "n_ohlc_violations": 0,
+  "max_clock_drift_seconds": 0.0,
+  "passed": false,
+  "issues": [
+    "gap fraction 0.2040% > 0.10% (largest gap 72 bars)",
+    "WARN: 506 returns beyond 10σ (robust) — verify against a second exchange before use"
+  ],
+  "generated_at": "2026-10-11T09:55:04.205526Z"
+}

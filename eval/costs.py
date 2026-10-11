@@ -16,6 +16,17 @@ from pydantic import BaseModel, ConfigDict, Field
 
 FITTED_PATH = Path("execution/reports/slippage_fit.json")
 
+SPREAD_BPS_BY_BASE: dict[str, float] = {
+    "BTC": 1.0, "ETH": 1.0, "SOL": 2.0, "BNB": 1.5, "XRP": 1.5, "DOGE": 2.0, "ADA": 2.5,
+    "AVAX": 3.0, "LINK": 3.0, "LTC": 2.5, "DOT": 3.0, "TRX": 2.5, "BCH": 3.0,
+}
+"""Typical top-of-book spreads on Binance USDT-M, rounded up. Placeholder until the
+execution-engineer fits per-symbol spreads from recorded L2 (T-007); unknown symbols get 5 bps."""
+
+
+def spread_bps_for(base: str) -> float:
+    return SPREAD_BPS_BY_BASE.get(base, 5.0)
+
 
 class CostModel(BaseModel):
     model_config = ConfigDict(frozen=True)

@@ -1,0 +1,22 @@
+{
+  "exchange": "binance",
+  "symbol": "AVAX/USDT",
+  "timeframe": "1h",
+  "n_rows": 52775,
+  "start": "2020-09-22T07:00:00Z",
+  "end": "2026-10-01T00:00:00Z",
+  "expected_rows": 52794,
+  "n_gaps": 19,
+  "gap_fraction": 0.00035988938136909495,
+  "largest_gap_bars": 4,
+  "n_duplicate_ts": 0,
+  "n_outliers_10sigma": 92,
+  "n_nonpositive_prices": 0,
+  "n_ohlc_violations": 0,
+  "max_clock_drift_seconds": 0.0,
+  "passed": true,
+  "issues": [
+    "WARN: 92 returns beyond 10σ (robust) — verify against a second exchange before use"
+  ],
+  "generated_at": "2026-10-11T09:56:59.734156Z"
+}

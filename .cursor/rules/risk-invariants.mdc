@@ -4,8 +4,11 @@ alwaysApply: true
 ---
 - Max risk per trade: 0.5% of equity (vol-targeted). Max gross exposure: 2.0x. Max net: 1.0x.
 - Daily loss limit: -2.5% → flatten all, halt until next UTC day.
-- Trailing drawdown limit: -8% from HWM → halt, require human re-enable.
-- Position sizing: fractional Kelly at f = 0.25 × Kelly, capped by vol target of 15% annualised.
+- Trailing drawdown, two tiers from HWM: -8% → de-risk (risk per trade × 0.5, alert; clears
+  automatically when the drawdown closes above -8%); -15% → halt, require human re-enable.
+  (Amended 2026-10-10 with CIO approval, tasks.md T-018: at the old 15% vol / -8% halt pair a
+  Sharpe-1 book was halted with ~100% probability within 3 years.)
+- Position sizing: fractional Kelly at f = 0.25 × Kelly, capped by vol target of 10% annualised.
 - No new risk 15 min before / 30 min after scheduled Tier-1 macro events (FOMC, CPI, NFP).
 - Any code touching risk/ or execution/ needs a test that proves the limit triggers.
 - If you are unsure whether a change weakens a limit, stop and ask the human.

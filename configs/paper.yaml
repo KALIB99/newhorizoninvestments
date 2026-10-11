@@ -5,7 +5,7 @@
 broker: PaperBroker
 cash_usd: 100000
 exchanges: [binance, bybit]
-vol_target_annual: 0.15   # mirrors risk/limits.py; the code value wins if they differ
+vol_target_annual: 0.10   # mirrors risk/limits.py; the code value wins if they differ
 
 strategies: []
 # - name: funding_carry

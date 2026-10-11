@@ -1,0 +1,151 @@
+{
+  "strategy": "cyclical_inversion",
+  "config_hash": "f1f78f878d25",
+  "params": {
+    "version": "1",
+    "symbols": [
+      "BTC/USDT:USDT",
+      "ETH/USDT:USDT",
+      "SOL/USDT:USDT"
+    ],
+    "timeframe": "1h",
+    "start": "2023-01-01",
+    "end": "2026-10-01",
+    "spread_bps": {
+      "BTC/USDT:USDT": 1.0,
+      "ETH/USDT:USDT": 1.0,
+      "SOL/USDT:USDT": 2.0
+    },
+    "level_lookback": [
+      96,
+      168
+    ],
+    "min_drop_atr": [
+      4.0
+    ],
+    "trail_atr": [
+      3.0
+    ],
+    "sides": [
+      "both",
+      "long"
+    ],
+    "drop_lookback": 24,
+    "sweep_atr": 0.1,
+    "reclaim_window": 2,
+    "stop_buffer_atr": 2.0,
+    "breakeven_r": 1.0,
+    "trail_after_r": 1.5,
+    "max_hold": 72,
+    "atr_period": 14,
+    "allowed_regimes": [
+      "Trend",
+      "Range",
+      "Chaos"
+    ],
+    "wf_train_days": 180,
+    "wf_test_days": 30,
+    "wf_embargo_days": 2
+  },
+  "params_class": "research.strategies.cyclical_inversion.CyclicalInversionParams",
+  "generated_at": "2026-10-09T22:45:56.130960Z",
+  "code_ref": "a79caa8",
+  "n_trials": 32,
+  "data_start": "2023-01-01T01:00:00Z",
+  "data_end": "2026-10-01T00:00:00Z",
+  "timeframe": "1h",
+  "symbols": [
+    "BTC/USDT:USDT",
+    "ETH/USDT:USDT",
+    "SOL/USDT:USDT"
+  ],
+  "cost_model": {
+    "taker_fee_bps": 5.0,
+    "maker_fee_bps": 2.0,
+    "spread_bps": 1.0,
+    "slip_a": 0.5,
+    "slip_b": 25.0,
+    "slip_c": 0.5,
+    "multiplier": 1.0,
+    "source": "default_conservative (no fitted file found)"
+  },
+  "cv": "walk-forward 180D train / 30D test / 2D embargo; per-family best-train-Sharpe selection; ¼-Kelly risk from train trades",
+  "sharpe_oos": -0.671157268924882,
+  "sharpe_is": 1.3704418222876673,
+  "deflated_sharpe": 0.0026322084490691456,
+  "dsr_p_value": 0.9973677915509308,
+  "pbo": 0.493,
+  "max_drawdown": -0.07871566665934848,
+  "calmar": -0.25037656145330833,
+  "turnover": 0.0011312812594220822,
+  "cost_drag_bps_per_trade": 14.327057044314765,
+  "n_trades_oos": 158,
+  "hit_rate": 0.3860759493670886,
+  "payoff_ratio": 1.161643672606072,
+  "sharpe_oos_at_1_5x_costs": -0.7772698607867755,
+  "per_regime_pnl": {
+    "Chaos": -0.018639122295762367,
+    "Range": -0.023301149169193347,
+    "Trend": -0.021240015157400705
+  },
+  "monthly_pnl": {
+    "2023-06": 0.0013338010380679055,
+    "2023-07": 0.0038149427563707317,
+    "2023-08": -0.0135562804715611,
+    "2023-09": 0.011095995024692273,
+    "2023-10": -0.03426545382488844,
+    "2023-11": 0.005811579889115404,
+    "2023-12": 0.001242006452210065,
+    "2024-01": -0.006850293619749204,
+    "2024-02": 0.005487348958064908,
+    "2024-03": -0.004405208896590906,
+    "2024-04": -0.022871846087672343,
+    "2024-05": 0.003409759666344714,
+    "2024-06": 0.0,
+    "2024-07": 0.0,
+    "2024-08": 0.0,
+    "2024-09": 0.0,
+    "2024-10": 0.0,
+    "2024-11": 0.0,
+    "2024-12": 0.0,
+    "2025-01": -0.003211141161901798,
+    "2025-02": -0.009742911740953097,
+    "2025-03": 0.0,
+    "2025-04": 0.0,
+    "2025-05": 0.0,
+    "2025-06": 0.0,
+    "2025-07": 0.0,
+    "2025-08": 0.0,
+    "2025-09": 0.0,
+    "2025-10": 0.0,
+    "2025-11": 0.0,
+    "2025-12": 0.0,
+    "2026-01": 0.0,
+    "2026-02": 0.0,
+    "2026-03": 0.0,
+    "2026-04": 0.0,
+    "2026-05": 0.0,
+    "2026-06": 0.0,
+    "2026-07": 0.0,
+    "2026-08": 0.0,
+    "2026-09": 0.0
+  },
+  "sharpe_by_fold": [
+    3.46,
+    -2.2,
+    1.48,
+    -3.97,
+    -0.35,
+    4.1,
+    -1.7,
+    3.9,
+    -1.16,
+    -4.21,
+    -0.19,
+    -2.96,
+    -5.18,
+    -3.86
+  ],
+  "verdict": "Reject",
+  "notes": "OOS 2023-06-30 → 2026-09-12. Total return -6.19%, CAGR -1.97%, mean day -0.0053%, best day +1.04%, worst day -1.57%, 9% of days positive, 82% flat.\n\nKill-switch halts in the final run: ['2025-02-26T18:00:00+00:00 trailing_drawdown equity=93,818'].\n\nCosts paid $2,167, funding paid $318 (on $100k start). Average -0.148R per trade, median hold 34 bars.\n\nBy side: short: 37 trades, $-3,111, avg -0.237R, hit 35%; long: 121 trades, $-3,076, avg -0.121R, hit 40%\n\nBy symbol: BTC/USDT:USDT: 54 trades, $-1,381, avg -0.046R; ETH/USDT:USDT: 49 trades, $-2,247, avg -0.204R; SOL/USDT:USDT: 55 trades, $-2,558, avg -0.199R\n\nExit reasons: {'stop': 100, 'time': 39, 'signal': 16, 'kill_switch': 2, 'stop_gap': 1}; avg R by exit: kill_switch -0.40, signal +1.74, stop -0.61, stop_gap +1.25, time +0.23\n\nPrinciples that fired (count of bars/setups): {'derisk_in_drawdown': 116, 'skip_cooldown': 70, 'shrunk_to_planned_risk': 43, 'shrunk_to_budget': 11, 'skip_risk_budget_full': 9, 'skip_consecutive_losses': 5, 'halt_trailing_drawdown': 1}\n\nTrial Sharpes (daily, full period, single sleeve, 0.5% risk): inv_n96_k4.0_t3.0_both -0.61, inv_n96_k4.0_t3.0_long -0.18, inv_n168_k4.0_t3.0_both -0.54, inv_n168_k4.0_t3.0_long +0.16\n\nSweep diagnostic (96-bar support, k=4, forward 24h in ATR): BTC: 855 sweeps, 716 reclaimed → -0.09 ATR (hit 56%) vs not reclaimed -0.35 ATR (hit 48%); ETH: 731 sweeps, 566 reclaimed → +0.05 ATR (hit 57%) vs not reclaimed +0.05 ATR (hit 52%); SOL: 861 sweeps, 692 reclaimed → +0.27 ATR (hit 56%) vs not reclaimed -0.32 ATR (hit 46%)\n\n1.5× costs: OOS Sharpe -0.78, halts ['2024-05-01T08:00:00+00:00 trailing_drawdown equity=93,628'].\n\nTier-1 event windows are NOT applied (no event calendar yet, T-005). Regime = rules fallback. Costs are the conservative default model (no fitted slippage yet, T-007). Dry/paper system only."
+}

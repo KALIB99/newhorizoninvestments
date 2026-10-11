@@ -32,11 +32,20 @@ class GateThresholds(BaseModel):
     dsr_p_value_max: float = 0.05
     pbo_max: float = 0.30
     min_oos_trades: int = 200
+    min_oos_trades_multiday: int = 100
+    """Amended 2026-10-10 with CIO approval (tasks.md T-018): strategies that hold ≥ 1 day
+    cannot produce 200 independent OOS trades in a 2–3 year window; 100 applies to them. The
+    Judge may additionally rule on an episode-count exception for carry-type books."""
     cost_stress_multiplier: float = 1.5
     min_regimes: int = 3
     min_positive_regimes: int = 2
     min_oos_is_ratio: float = 0.5
     max_plausible_sharpe: float = 3.0
+    max_plausible_sharpe_neutral_multiday: float = 6.0
+    """Amended 2026-10-11 with CIO approval (tasks.md T-002, Judge's item 5): a market-neutral
+    multiday book (tearsheet declares both) is flat most days, so its return dispersion is tiny
+    and Sharpe 4–5 is the normal shape of a ~4% CAGR yield, not a mis-costing signature. The cap
+    stays a sanity bound; directional and intraday books keep 3.0."""
     min_data_span_days: int = 730
     min_payoff_ratio_momentum: float = 1.5
 
@@ -85,6 +94,11 @@ def _recompute_hash(ts: Tearsheet) -> tuple[bool, str]:
 THRESHOLDS = GateThresholds()
 
 
+def _is_daily_or_slower(tf: str) -> bool:
+    """'1d', '3d', '1w' → True; '1m', '5m', '1h', '4h' → False."""
+    return tf.strip().lower().endswith(("d", "w"))
+
+
 def evaluate(ts: Tearsheet, thr: GateThresholds | None = None, *, check_code: bool = True) -> list[Check]:
     thr = thr or THRESHOLDS
     c: list[Check] = []
@@ -108,8 +122,14 @@ def evaluate(ts: Tearsheet, thr: GateThresholds | None = None, *, check_code: bo
         )
     )
     c.append(Check(f"PBO < {thr.pbo_max:.2f}", ts.pbo < thr.pbo_max, f"pbo={ts.pbo:.3f}"))
+    multiday = ts.horizon == "multiday" or _is_daily_or_slower(ts.timeframe)
+    need = thr.min_oos_trades_multiday if multiday else thr.min_oos_trades
     c.append(
-        Check(f"OOS trades >= {thr.min_oos_trades}", ts.n_trades_oos >= thr.min_oos_trades, f"n={ts.n_trades_oos}")
+        Check(
+            f"OOS trades >= {need}",
+            ts.n_trades_oos >= need,
+            f"n={ts.n_trades_oos} ({'multiday' if multiday else 'intraday'} horizon)",
+        )
     )
     c.append(
         Check(
@@ -138,11 +158,14 @@ def evaluate(ts: Tearsheet, thr: GateThresholds | None = None, *, check_code: bo
     else:
         c.append(Check("OOS/IS Sharpe", False, f"in-sample Sharpe {ts.sharpe_is:.2f} <= 0"))
 
+    neutral_carve_out = multiday and ts.market_neutral
+    cap = thr.max_plausible_sharpe_neutral_multiday if neutral_carve_out else thr.max_plausible_sharpe
     c.append(
         Check(
-            f"Sharpe <= {thr.max_plausible_sharpe} (plausibility)",
-            ts.sharpe_oos <= thr.max_plausible_sharpe,
-            f"sharpe_oos={ts.sharpe_oos:.2f}; above this is a mis-costing/lookahead red flag",
+            f"Sharpe <= {cap} (plausibility)",
+            ts.sharpe_oos <= cap,
+            f"sharpe_oos={ts.sharpe_oos:.2f}; above this is a mis-costing/lookahead red flag"
+            + (" [market-neutral multiday cap]" if neutral_carve_out else ""),
         )
     )
 

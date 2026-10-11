@@ -1,0 +1,21 @@
+{
+  "leg_fraction": 0.2506265664160401,
+  "max_pairs": 3,
+  "n_trades_oos": 43,
+  "n_episodes_oos": 8,
+  "episodes_positive_frac": 0.875,
+  "invested_day_sharpe": 11.637960515439321,
+  "block_bootstrap_ci95": [
+    9.939245655595654,
+    14.038404407496342
+  ],
+  "exception_thresholds_met": false,
+  "cash_yield_apr": 0.05,
+  "opportunity_cost_usd": 7155.350824212929,
+  "total_oos": 0.6446287772057306,
+  "total_oos_net_cash_yield": 0.5310653209090177,
+  "sharpe_oos_net_cash_yield": 4.730699287868604,
+  "max_perp_rally_in_hold": 4.576630672886117,
+  "holds_breaching_margin": 17,
+  "perp_initial_margin": 0.33
+}

@@ -28,11 +28,27 @@ def test_daily_loss_boundary_is_inclusive():
     assert ks.halted
 
 
+def test_trailing_drawdown_derisk_tier_at_minus_8pct_then_recovers():
+    ks = KillSwitch(initial_equity=100_000)
+    ks.on_equity(110_000, T0)  # new HWM
+    ks.on_equity(101_300, T0 + timedelta(days=1))  # -7.9%: normal
+    assert ks.risk_multiplier() == 1.0 and not ks.state.derisk
+    ks.on_equity(101_200, T0 + timedelta(days=2))  # -8.0%: de-risk, not a halt
+    assert not ks.halted and ks.state.derisk and ks.risk_multiplier() == 0.5
+    assert ks.can_trade(T0 + timedelta(days=2))
+    assert any("DE-RISK" in line for line in ks.state.log)
+    ks.on_equity(104_000, T0 + timedelta(days=3))  # -5.5%: tier clears without a human
+    assert ks.risk_multiplier() == 1.0 and not ks.state.derisk
+
+
 def test_trailing_drawdown_is_sticky_until_human():
     ks = KillSwitch(initial_equity=100_000)
     ks.on_equity(110_000, T0)  # new HWM
-    ks.on_equity(101_200, T0 + timedelta(days=3))  # -8.0% from HWM
+    ks.on_equity(94_000, T0 + timedelta(days=3))  # -14.5%: de-risk only
+    assert not ks.halted
+    ks.on_equity(93_500, T0 + timedelta(days=4))  # -15.0% from HWM
     assert ks.halted and HaltReason.TRAILING_DD in ks.state.reasons
+    assert ks.risk_multiplier() == 0.0
     assert not ks.can_trade(T0 + timedelta(days=30))  # time does not heal this one
     with pytest.raises(ValueError):
         ks.human_reenable("")
@@ -44,7 +60,7 @@ def test_trailing_drawdown_is_sticky_until_human():
 def test_trailing_dd_not_cleared_by_day_rollover_even_with_daily_loss():
     ks = KillSwitch(initial_equity=100_000)
     ks.on_equity(100_000, T0)
-    ks.on_equity(91_000, T0 + timedelta(hours=1))  # -9% in one day: both trip
+    ks.on_equity(84_000, T0 + timedelta(hours=1))  # -16% in one day: both trip
     assert set(ks.state.reasons) == {HaltReason.DAILY_LOSS, HaltReason.TRAILING_DD}
     assert not ks.can_trade(T0 + timedelta(days=1))
 

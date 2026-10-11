@@ -10,8 +10,15 @@ edges while protecting capital.
 - Overfitting is the default outcome of "iterate until profitable". The Judge exists to kill
   most ideas. If it is not rejecting most of them, it is broken.
 - Regime-gated ensembles beat single strategies. Market-neutral carry is the ballast;
-  directional signals are the overlay, not the core.
+ directional signals are the overlay, not the core.
 - Nothing here is a profit guarantee. Start in paper mode, then tiny capital.
+- Measured, not assumed (2026-10, tasks.md T-009/T-013–T-017): on 1h Binance perps across
+ 13 coins, breakout momentum, VWAP mean reversion and support/resistance sweep-inversion all
+ have gross edge ≈ 0R per trade before costs; maker fills do not rescue them. New directional
+ hypotheses go on 4h bars with ≥ 1-day expected holds, or cross-sectional/market-neutral
+ constructions. Do not spend trials on 1h single-asset patterns without a new information source.
+- Loosening a risk limit never turns a negative expectancy positive; it only changes the speed
+ of the outcome. The lever for profit is gross edge minus cost, then vol scaling — in that order.
 
 ## Roles (subagents in .cursor/agents/)
 - data-engineer: ingestion, feature store, data quality.

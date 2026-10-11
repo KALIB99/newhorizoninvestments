@@ -20,14 +20,18 @@ pytestmark = pytest.mark.risk
 
 
 def test_constitution_defaults_are_unchanged():
-    """If this fails, someone changed a constitution value. Update the .mdc, get human sign-off."""
+    """If this fails, someone changed a constitution value. Update the .mdc, get human sign-off.
+    Last amendment: 2026-10-10, CIO-approved (tasks.md T-018): vol 0.15 → 0.10, trailing halt
+    −0.08 → −0.15, −0.08 became the de-risk tier."""
     assert LIMITS.max_risk_per_trade == 0.005
     assert LIMITS.max_gross_exposure == 2.0
     assert LIMITS.max_net_exposure == 1.0
     assert LIMITS.daily_loss_limit == -0.025
-    assert LIMITS.trailing_dd_limit == -0.08
+    assert LIMITS.trailing_dd_derisk == -0.08
+    assert LIMITS.trailing_dd_derisk_multiplier == 0.5
+    assert LIMITS.trailing_dd_limit == -0.15
     assert LIMITS.kelly_fraction == 0.25
-    assert LIMITS.vol_target_annual == 0.15
+    assert LIMITS.vol_target_annual == 0.10
     assert LIMITS.event_pre_minutes == 15
     assert LIMITS.event_post_minutes == 30
     assert LIMITS.data_staleness_seconds == 180

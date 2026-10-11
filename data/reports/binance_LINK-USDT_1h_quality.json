@@ -1,0 +1,22 @@
+{
+  "exchange": "binance",
+  "symbol": "LINK/USDT",
+  "timeframe": "1h",
+  "n_rows": 59129,
+  "start": "2020-01-01T01:00:00Z",
+  "end": "2026-10-01T00:00:00Z",
+  "expected_rows": 59160,
+  "n_gaps": 31,
+  "gap_fraction": 0.0005240027045300879,
+  "largest_gap_bars": 5,
+  "n_duplicate_ts": 0,
+  "n_outliers_10sigma": 80,
+  "n_nonpositive_prices": 0,
+  "n_ohlc_violations": 0,
+  "max_clock_drift_seconds": 0.0,
+  "passed": true,
+  "issues": [
+    "WARN: 80 returns beyond 10σ (robust) — verify against a second exchange before use"
+  ],
+  "generated_at": "2026-10-11T09:57:11.312015Z"
+}
